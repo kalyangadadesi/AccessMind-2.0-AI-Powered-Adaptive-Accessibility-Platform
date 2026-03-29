@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reports - AccessMind</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font (FIXED) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Animations -->
+  <style>
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .glow:hover {
+      box-shadow: 0 0 20px rgba(99,102,241,0.7);
+    }
+
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+
+<body class="bg-black text-white font-[Inter] relative overflow-x-hidden">
+
+<!-- 🌌 Background Glow -->
+<div class="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-blue-600 opacity-20 blur-3xl rounded-full"></div>
+<div class="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-purple-600 opacity-20 blur-3xl rounded-full"></div>
+
+<div class="flex">
+
+  <!-- Sidebar -->
+  <div class="w-64 h-screen backdrop-blur-lg bg-white/10 border-r border-white/10 p-5 fixed">
+
+    <h1 class="text-xl font-bold mb-8">AccessMind</h1>
+
+    <ul class="space-y-4">
+      <li><a href="dashboard.html" class="block p-2 hover:bg-white/10 rounded">Dashboard</a></li>
+      <li><a href="scanner.html" class="block p-2 hover:bg-white/10 rounded">Scanner</a></li>
+      <li><a href="adaptive.html" class="block p-2 hover:bg-white/10 rounded">Adaptive</a></li>
+      <li><a href="translate.html" class="block p-2 hover:bg-white/10 rounded">Translate</a></li>
+      <li><a href="reports.html" class="block p-2 bg-white/10 rounded">Reports</a></li>
+      <li><a href="settings.html" class="block p-2 hover:bg-white/10 rounded">Settings</a></li>
+    </ul>
+
+  </div>
+
+  <!-- Main -->
+  <div class="ml-64 flex-1 p-10 fade-in">
+
+    <h1 class="text-3xl font-bold mb-6">Analytics Reports</h1>
+
+    <!-- Charts -->
+    <div class="grid grid-cols-3 gap-6 mb-10">
+
+      <div class="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 rounded-2xl glow hover-lift transition">
+        <h2 class="mb-4 font-semibold">Accessibility Trend</h2>
+        <div class="h-32 bg-zinc-700 rounded flex items-center justify-center text-gray-400">
+          Line Chart UI
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 rounded-2xl glow hover-lift transition">
+        <h2 class="mb-4 font-semibold">Common Issues</h2>
+        <div class="h-32 bg-zinc-700 rounded flex items-center justify-center text-gray-400">
+          Bar Chart UI
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 rounded-2xl glow hover-lift transition">
+        <h2 class="mb-4 font-semibold">AI Improvements</h2>
+        <p class="text-3xl font-bold text-green-400">+35%</p>
+        <p class="text-gray-400 mt-2">Efficiency increased</p>
+      </div>
+
+    </div>
+
+    <!-- Summary -->
+    <div class="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 rounded-2xl glow mb-10 hover-lift transition">
+      <h2 class="mb-4 font-semibold">AI Summary</h2>
+      <p class="text-gray-300">
+        AI has significantly improved accessibility by optimizing contrast, simplifying text,
+        and enhancing usability across multiple user profiles.
+      </p>
+    </div>
+
+    <!-- Export Button -->
+    <button class="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-xl font-semibold hover:scale-105 hover:shadow-lg transition duration-300">
+      Export Report
+    </button>
+
+  </div>
+
+</div>
+
+<!-- Floating Toolbar -->
+<div class="fixed bottom-6 right-6 float">
+
+  <div class="bg-white/10 backdrop-blur-lg p-4 rounded-2xl shadow-lg flex gap-3">
+
+    <button class="hover:scale-110 transition">▶️</button>
+    <button class="hover:scale-110 transition">⏸️</button>
+
+    <select class="bg-black text-white rounded px-2">
+      <option>EN</option>
+      <option>Tamil</option>
+      <option>Hindi</option>
+    </select>
+
+  </div>
+
+</div>
+
+</body>
+</html>

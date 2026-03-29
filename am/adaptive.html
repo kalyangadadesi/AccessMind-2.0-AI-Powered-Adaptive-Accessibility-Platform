@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adaptive Mode - AccessMind</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Animations -->
+  <style>
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .glow:hover {
+      box-shadow: 0 0 20px rgba(99,102,241,0.7);
+    }
+
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+
+<body class="bg-black text-white font-[Inter] relative overflow-x-hidden">
+
+<!-- 🌌 Background Glow -->
+<div class="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-blue-600 opacity-20 blur-3xl rounded-full"></div>
+<div class="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-purple-600 opacity-20 blur-3xl rounded-full"></div>
+
+<div class="flex">
+
+  <!-- Sidebar -->
+  <div class="w-64 h-screen backdrop-blur-lg bg-white/10 border-r border-white/10 p-5 fixed">
+
+    <h1 class="text-xl font-bold mb-8">AccessMind</h1>
+
+    <ul class="space-y-4">
+      <li><a href="dashboard.html" class="block p-2 hover:bg-white/10 rounded">Dashboard</a></li>
+      <li><a href="scanner.html" class="block p-2 hover:bg-white/10 rounded">Scanner</a></li>
+      <li><a href="adaptive.html" class="block p-2 bg-white/10 rounded">Adaptive</a></li>
+      <li><a href="translate.html" class="block p-2 hover:bg-white/10 rounded">Translate</a></li>
+      <li><a href="reports.html" class="block p-2 hover:bg-white/10 rounded">Reports</a></li>
+      <li><a href="settings.html" class="block p-2 hover:bg-white/10 rounded">Settings</a></li>
+    </ul>
+
+  </div>
+
+  <!-- Main -->
+  <div class="ml-64 flex-1 p-10 fade-in">
+
+    <h1 class="text-3xl font-bold mb-6">Adaptive Accessibility Modes</h1>
+
+    <!-- Modes -->
+    <div class="grid grid-cols-2 gap-6 mb-6">
+
+      <button onclick="activateMode('adhd')" 
+        class="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 rounded-xl glow hover:scale-105 hover-lift transition">
+        ADHD Mode
+      </button>
+
+      <button onclick="activateMode('dyslexia')" 
+        class="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 rounded-xl glow hover:scale-105 hover-lift transition">
+        Dyslexia Mode
+      </button>
+
+      <button onclick="activateMode('low')" 
+        class="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 rounded-xl glow hover:scale-105 hover-lift transition">
+        Low Literacy
+      </button>
+
+      <button onclick="activateMode('vision')" 
+        class="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 rounded-xl glow hover:scale-105 hover-lift transition">
+        Visually Impaired
+      </button>
+
+    </div>
+
+    <!-- Controls -->
+    <div class="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 rounded-2xl glow mb-6">
+      <h2 class="mb-4 font-semibold">Controls</h2>
+
+      <label class="flex items-center gap-2 mb-2">
+        <input type="checkbox" onclick="toggleSimplify()"> Simplify Text
+      </label>
+
+      <label class="flex items-center gap-2 mb-2">
+        <input type="checkbox" onclick="toggleHighlight()"> Highlight Keywords
+      </label>
+
+      <label class="flex items-center gap-2">
+        <input type="checkbox" onclick="toggleFocus()"> Focus Mode
+      </label>
+    </div>
+
+    <!-- Preview -->
+    <div id="preview" class="bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 rounded-2xl glow transition-all duration-300 hover-lift">
+      This is sample content to demonstrate accessibility transformation. 
+      AI dynamically adjusts this text based on selected user mode.
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Floating Toolbar -->
+<div class="fixed bottom-6 right-6 float">
+
+  <div class="bg-white/10 backdrop-blur-lg p-4 rounded-2xl shadow-lg flex gap-3">
+
+    <button class="hover:scale-110 transition">▶️</button>
+    <button class="hover:scale-110 transition">⏸️</button>
+
+    <select class="bg-black text-white rounded px-2">
+      <option>EN</option>
+      <option>Tamil</option>
+      <option>Hindi</option>
+    </select>
+
+  </div>
+
+</div>
+
+<!-- Script -->
+<script>
+function activateMode(mode) {
+  const preview = document.getElementById("preview");
+
+  if (mode === "adhd") {
+    preview.style.fontSize = "22px";
+    preview.style.lineHeight = "2";
+    preview.style.letterSpacing = "1px";
+  }
+
+  if (mode === "dyslexia") {
+    preview.style.fontFamily = "Arial";
+    preview.style.fontSize = "20px";
+  }
+
+  if (mode === "low") {
+    preview.innerText = "Simple: This text is made easy to read.";
+  }
+
+  if (mode === "vision") {
+    preview.style.background = "black";
+    preview.style.color = "yellow";
+  }
+}
+
+function toggleSimplify() {
+  document.getElementById("preview").innerText = "Simplified text version for better understanding.";
+}
+
+function toggleHighlight() {
+  document.getElementById("preview").innerHTML = "<span style='color:yellow'>Important</span> content highlighted.";
+}
+
+function toggleFocus() {
+  document.body.style.background = "#000";
+}
+</script>
+
+</body>
+</html>
